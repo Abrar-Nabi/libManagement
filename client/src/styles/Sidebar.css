@@ -1,0 +1,44 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 10px 0;
+}
+
+.sidebar-menu li span{
+  margin: 0px 15px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 25px;
+}
+  .sidebar-link:hover {
+    background-color: #7a7a7a;
+  }
+  
+
+/* Highlight Active Page */
+.sidebar-link.active {
+  background-color: #ffffff;
+
+  color: #000000;
+}

@@ -1,0 +1,102 @@
+.members-container {
+    padding: 20px;
+  }
+  
+  .add-member-form {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+  
+  .add-member-form input {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .add-member-form button {
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #11c116;
+    color: white;
+    border: none;
+    border-radius: 25px;
+}
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  .edit-btn {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #8e8e8e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+  
+  .delete-btn {
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+  
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .modal-content input {
+    width: 90%;
+    padding: 8px;
+    margin: 10px 0;
+  }
+  
+  .modal-content button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .close-btn {
+    background-color: red;
+    color: white;
+    border: none;
+  }
+  
