@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">📚 Library System</div>
+      <div className="logo">Library App</div>
 
       {librarian && (
         <div className="user-menu">

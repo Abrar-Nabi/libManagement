@@ -1,64 +1,8 @@
 .members-container {
     padding: 20px;
   }
-  
-  .add-member-form {
-    display: flex;
-    gap: 50px;
-    margin-bottom: 20px;
-}
-  
-  .add-member-form input {
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .add-member-form button {
-    padding: 8px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #11c116;
-    color: white;
-    border: none;
-    border-radius: 25px;
-}
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-  }
-  
-  .edit-btn {
-    margin-right: 10px;
-    padding: 5px 10px;
-    background-color: #8e8e8e;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 25px;
-  }
-  
-  .delete-btn {
-    padding: 5px 10px;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 25px;
-  }
-  
 
+  
   .modal {
     position: fixed;
     top: 0;

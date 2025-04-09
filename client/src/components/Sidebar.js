@@ -39,7 +39,7 @@ const Sidebar = () => {
             className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}
           >
             <FaShoppingCart className="sidebar-icon" />
-            <span>Check-Out Books</span>
+            <span>Check-Out</span>
           </NavLink>
         </li>
       </ul>

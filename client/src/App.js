@@ -3,20 +3,36 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/Home";
+import UserDashboard from "./pages/user-dashboard";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/" element={<Navigate to="/login" />} />
 
-        {/* Redirect "/" to "/home" if logged in */}
-        <Route path="/" element={<Navigate to="/home" />} />
+        {/* Public Routes */}
+        <Route path="/login" element={!localStorage.getItem("token") ? <LoginPage /> : <Navigate to="/" />} />
+        <Route path="/signup" element={!localStorage.getItem("token") ? <SignupPage /> : <Navigate to="/" />} />
 
         {/* Protected Routes */}
-        <Route path="/home/*" element={<PrivateRoute><Home /></PrivateRoute>} />
+        <Route
+          path="/home/*"
+          element={
+            <PrivateRoute allowedRoles={["librarian"]}>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user-dashboard"
+          element={
+            <PrivateRoute allowedRoles={["user"]}>
+              <UserDashboard />
+            </PrivateRoute>
+          }
+        />
+
       </Routes>
     </Router>
   );

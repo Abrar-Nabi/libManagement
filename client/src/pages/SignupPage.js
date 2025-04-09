@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "../styles/Signup.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -18,27 +19,29 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+  
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", formData);
-      navigate("/login"); // Redirect to login page after signup
+      const res = await axios.post("http://localhost:5000/api/auth/user/signup", formData);
+      const userId = res.data.user?.userId; // Grabbing the 6-digit userId from the response
+      navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
     }
   };
+  
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-6 bg-white rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        <form onSubmit={handleSubmit}>
+    <div className="signup-container">
+      <div className="signup-card">
+        <h2 className="signup-title">Sign Up</h2>
+        {error && <p className="signup-error">{error}</p>}
+        <form onSubmit={handleSubmit} className="signup-form">
           <input
             type="text"
             name="name"
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 mb-2 border rounded"
             required
           />
           <input
@@ -47,7 +50,6 @@ const Signup = () => {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 mb-2 border rounded"
             required
           />
           <input
@@ -56,13 +58,13 @@ const Signup = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-2 mb-2 border rounded"
             required
           />
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
-            Sign Up
-          </button>
+          <button type="submit">Sign Up</button>
         </form>
+        <p className="login-signup-link">
+         Already have an account? <Link to="/login">Login in here</Link>
+        </p>
       </div>
     </div>
   );

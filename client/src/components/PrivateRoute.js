@@ -1,9 +1,13 @@
 import { Navigate } from "react-router-dom";
 
-const PrivateRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("token"); // Check auth status
+const PrivateRoute = ({ children, allowedRoles }) => {
+  const token = localStorage.getItem("token");
+  const userData = JSON.parse(localStorage.getItem("user"));
 
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  if (!token) return <Navigate to="/login" />;
+  if (allowedRoles && !allowedRoles.includes(userData?.role)) return <Navigate to="/user-dashboard" />;
+
+  return children;
 };
 
 export default PrivateRoute;
