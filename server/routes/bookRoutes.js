@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Book = require("../models/bookModel");
 
+
+
+
+
 // Generate a 6-digit unique book ID
 const generateBookId = () => Math.floor(100000 + Math.random() * 900000).toString();
 

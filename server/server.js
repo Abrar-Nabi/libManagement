@@ -17,10 +17,14 @@ app.get("/", (req, res) => {
 });
 
 
-app.use("/api/auth",  require("./routes/authRoutes"));
-app.use("/api/members", require("./routes/memberRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/users", require("./routes/adminRoutes"));
+
 app.use("/api/books", require("./routes/bookRoutes"));
 app.use("/api/checkout", require("./routes/checkoutRoutes"));
+
+
+
 
 
 

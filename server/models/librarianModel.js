@@ -5,6 +5,7 @@ const librarianSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   password: String,
+  role: { type: String, default: "librarian" }, // 👈 Add this line
 });
 
 librarianSchema.pre("save", async function (next) {
