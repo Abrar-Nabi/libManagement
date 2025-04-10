@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
@@ -9,11 +9,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-
         {/* Public Routes */}
-        <Route path="/login" element={!localStorage.getItem("token") ? <LoginPage /> : <Navigate to="/" />} />
-        <Route path="/signup" element={!localStorage.getItem("token") ? <SignupPage /> : <Navigate to="/" />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
         {/* Protected Routes */}
         <Route
@@ -32,7 +31,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
       </Routes>
     </Router>
   );
