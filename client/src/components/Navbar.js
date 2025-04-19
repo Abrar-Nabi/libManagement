@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+
 import { FaUserCircle } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import "../styles/Navbar.css";
@@ -29,9 +30,24 @@ const Navbar = () => {
       </div>
 
       <div className="nav-links">
-        <Link to="/user-newarrivals" className="nav-link">New Arrivals</Link>
-        <Link to="/user-allbooks" className="nav-link">All Books</Link>
-      </div>
+  <NavLink
+    to="/user-newarrivals"
+    className={({ isActive }) =>
+      isActive ? "nav-link active-link" : "nav-link"
+    }
+  >
+    New Arrivals
+  </NavLink>
+  <NavLink
+    to="/user-allbooks"
+    className={({ isActive }) =>
+      isActive ? "nav-link active-link" : "nav-link"
+    }
+  >
+    All Books
+  </NavLink>
+</div>
+
 
       {librarian && (
         <div className="user-menu">
