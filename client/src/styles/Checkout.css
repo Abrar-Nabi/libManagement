@@ -1,0 +1,25 @@
+.checkout-container {
+  padding: 20px;
+}
+
+.checkout-container h2 {
+  margin-bottom: 20px;
+}
+
+.checkout-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .checkout-form {
+    flex-direction: column;
+  }
+
+  .checkout-form select,
+  .checkout-form input,
+  .checkout-form button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,96 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Navy blue */
+  padding: 12px 24px;
+  color: #000000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: #000000;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color:      #1e3a8a;/* Yellow underline */
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #6e6e6e;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-button {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.user-icon,
+.dropdown-icon {
+  font-size: 1.2rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  padding: 8px 0;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f3f4f6;
+}
