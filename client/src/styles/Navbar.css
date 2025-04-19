@@ -48,6 +48,15 @@
 .nav-link:hover {
   color: #6e6e6e;
 }
+.active-link {
+  color: #1e3a8a; /* Active color */
+  font-weight: 600;
+}
+
+.active-link::after {
+  width: 100%;
+}
+
 
 .user-menu {
   position: relative;
