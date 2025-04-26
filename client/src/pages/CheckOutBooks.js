@@ -173,7 +173,8 @@ const Checkout = () => {
           {checkouts.map((checkout) => {
             const checkoutDate = new Date(checkout.createdAt);
             const days = calculateDaysBorrowed(checkoutDate);
-            const rent = days * rentPerDay;
+            const rent = days > 9 ? (days - 9) * rentPerDay : 0;
+  
 
             return (
               <tr key={checkout._id}>
