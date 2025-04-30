@@ -86,7 +86,8 @@ const UserDashboard = () => {
                     <td>{b.bookId?.author}</td>
                     <td>{new Date(b.createdAt).toLocaleDateString()}</td>
                     <td>{days}</td>
-                    <td>₹{days * 10}</td>
+          <td>₹{Math.max(0, days - 9) * 10}</td>
+
                     <td>{b.returned ? "✅ Returned" : " Not Returned"}</td>
                   </tr>
                 );
