@@ -38,6 +38,7 @@ const Navbar = () => {
   >
     New Arrivals
   </NavLink>
+
   <NavLink
     to="/user-allbooks"
     className={({ isActive }) =>
@@ -46,6 +47,16 @@ const Navbar = () => {
   >
     All Books
   </NavLink>
+  
+  <NavLink
+    to="/user-booksborrowed"
+    className={({ isActive }) =>
+      isActive ? "nav-link active-link" : "nav-link"
+    }
+  >
+    Books Borrowed
+  </NavLink>
+
 </div>
 
 

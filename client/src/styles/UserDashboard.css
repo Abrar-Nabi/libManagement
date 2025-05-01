@@ -1,44 +1,71 @@
-.user-dashboard {
-  max-width: 1200px;
-  min-height: 64vh;
-  margin: 20px auto;
-  padding: 20px;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f9fafc;
-  border-radius: 10px;
+.hero-section {
+  background-image: url("https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-  
-  /* Welcome */
-  .welcome-box {
-    background-color: #1e3a8a;
-    color: white;
-    padding: 30px 20px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .welcome-box h2 {
-    margin-bottom: 10px;
-    font-size: 28px;
-  }
-  
-  .welcome-box .quote {
-    font-style: italic;
-    font-size: 16px;
-    color: #f1f1f1;
-  }
-  
-  /* Section Titles */
-  .user-dashboard h3 {
-    font-size: 20px;
-    color: #007bff;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #007bff33;
-    padding-bottom: 4px;
-  }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+  background-color: #ff6f61;
+  color: white;
+  padding: 12px 24px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+  background-color: #ff3b2e;
+}
+
+.hero-buttons .btn.secondary {
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+.hero-buttons .btn.secondary:hover {
+  background-color: white;
+  color: #333;
+}
+.quote-text {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: 1rem;
+  color: #f0e6d2;
+  transition: opacity 0.6s ease;
+}
+
   .page {
     display: flex;
     flex-direction: column;

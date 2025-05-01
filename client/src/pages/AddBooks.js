@@ -5,6 +5,8 @@ import "../styles/global.css";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [newBook, setNewBook] = useState({
     name: "",
     author: "",
@@ -19,6 +21,10 @@ const Books = () => {
   useEffect(() => {
     fetchBooks();
   }, []);
+
+  useEffect(() => {
+    handleSearch(searchTerm);
+  }, [books, searchTerm]);
 
   const fetchBooks = async () => {
     try {
@@ -77,11 +83,28 @@ const Books = () => {
     setNewBook({ name: "", author: "", genre: "", language: "", totalCopies: "" });
   };
 
+  const handleSearch = (term) => {
+    const lower = term.toLowerCase();
+    const filtered = books.filter(
+      (book) =>
+        book.name.toLowerCase().includes(lower) ||
+        book.author.toLowerCase().includes(lower)
+    );
+    setFilteredBooks(filtered);
+  };
+
   return (
     <div className="books-container">
       <button className="float-add-btn" onClick={() => setShowModal(true)}>➕ Add Book</button>
+      <h2>Books</h2>
 
-      <h2>📚 Books</h2>
+      <input
+        type="text"
+        placeholder="Search by name or author"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{ marginBottom: "1rem", padding: "0.5rem", width: "100%", maxWidth: "400px" }}
+      />
 
       <div className="table-wrapper">
         <table>
@@ -98,21 +121,29 @@ const Books = () => {
             </tr>
           </thead>
           <tbody>
-            {books.map((book) => (
-              <tr key={book._id}>
-                <td>{book.bookId}</td>
-                <td>{book.name}</td>
-                <td>{book.author}</td>
-                <td>{book.genre}</td>
-                <td>{book.language}</td>
-                <td>{book.totalCopies}</td>
-                <td>{book.totalCopies > 0 ? "Available" : "Not Available"}</td>
-                <td>
-                  <button className="edit-btn" onClick={() => handleEdit(book)}>Edit</button>
-                  <button className="delete-btn" onClick={() => deleteBook(book._id)}>Delete</button>
+            {filteredBooks.length > 0 ? (
+              filteredBooks.map((book) => (
+                <tr key={book._id}>
+                  <td>{book.bookId}</td>
+                  <td>{book.name}</td>
+                  <td>{book.author}</td>
+                  <td>{book.genre}</td>
+                  <td>{book.language}</td>
+                  <td>{book.totalCopies}</td>
+                  <td>{book.totalCopies > 0 ? "Available" : "Not Available"}</td>
+                  <td>
+                    <button className="edit-btn" onClick={() => handleEdit(book)}>Edit</button>
+                    <button className="delete-btn" onClick={() => deleteBook(book._id)}>Delete</button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="8" style={{ textAlign: "center", padding: "1rem" }}>
+                  No results found.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

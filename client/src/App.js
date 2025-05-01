@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import UserDashboard from "./pages/user-dashboard";
 import NewArrivals from "./pages/NewArrivals";
 import AllBooks from "./pages/AllBooks";
+import BorrowedBooks from "./pages/BorrowedBooks";
 
 function App() {
   return (
@@ -46,6 +47,14 @@ function App() {
           element={
             <PrivateRoute allowedRoles={["user"]}>
               <NewArrivals />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user-booksborrowed"
+          element={
+            <PrivateRoute allowedRoles={["user"]}>
+              <BorrowedBooks />
             </PrivateRoute>
           }
         />
