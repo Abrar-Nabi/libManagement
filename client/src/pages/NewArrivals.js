@@ -33,19 +33,24 @@ const NewArrivals = () => {
           style={{ margin: "10px 0", padding: "8px", width: "100%", maxWidth: "400px" }}
         />
         <div className="book-list">
-          {filteredBooks.map((book) => (
-            <div key={book._id} className="book-card">
-              <h4>{book.name}</h4>
-              <p><strong>Author:</strong> {book.author}</p>
-              <p><strong>Genre:</strong> {book.genre}</p>
-              <p className={book.totalCopies > book.borrowedCopies ? "available" : "unavailable"}>
-                {book.totalCopies > book.borrowedCopies ? "Available" : "Not Available"}
-              </p>
-            </div>
-          ))}
+          {filteredBooks.length === 0 ? (
+            <p className="no-results">No results found.</p>
+          ) : (
+            filteredBooks.map((book) => (
+              <div key={book._id} className="book-card">
+                <h4>{book.name}</h4>
+                <p><strong>Author:</strong> {book.author}</p>
+                <p><strong>Genre:</strong> {book.genre}</p>
+                <p className={book.totalCopies > book.borrowedCopies ? "available" : "unavailable"}>
+                  {book.totalCopies > book.borrowedCopies ? "Available" : "Not Available"}
+                </p>
+              </div>
+            ))
+          )}
         </div>
+
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
