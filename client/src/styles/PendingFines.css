@@ -1,0 +1,21 @@
+.pending-fines {
+    padding: 20px;
+  }
+  
+  .fines-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .fines-table th,
+  .fines-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .fines-table th {
+    background-color: #f4f4f4;
+  }
+  

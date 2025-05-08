@@ -5,11 +5,13 @@ import Dashboard from "./Dashboard";
 import Members from "./Members";
 import AddBooks from "./AddBooks";
 import CheckOutBooks from "./CheckOutBooks";
+import PendingFines from "./PendingFines"; // Import PendingFines component
 import "../styles/home.css";
+
 const Home = () => {
   return (
     <div>
-      <AdminNavbar/>
+      <AdminNavbar />
       <div className="home-container">
         <Sidebar />
         <div className="content">
@@ -20,6 +22,7 @@ const Home = () => {
             <Route path="/members" element={<Members />} />
             <Route path="/add-books" element={<AddBooks />} />
             <Route path="/check-out" element={<CheckOutBooks />} />
+            <Route path="/pending-fines" element={<PendingFines />} /> {/* Add PendingFines route */}
           </Routes>
         </div>
       </div>

@@ -59,13 +59,20 @@ const Checkout = () => {
     );
   
     if (activeCheckouts.length >= 3) {
-      return alert("❌ This member already has 3 books checked out.");
+      alert("The member already has borrowed max books.");
+      
+      // Reset the form inputs if the member has reached the max limit
+      setBookSearch("");
+      setMemberSearch("");
+      setSelectedBook("");
+      setSelectedMember("");
+      return; // Exit the function to avoid proceeding with the checkout
     }
   
     try {
       const book = books.find(b => b._id === selectedBook);
       if (book.totalCopies <= 0) {
-        return alert(`❌ Book "${book.name}" is not available for checkout.`);
+        return alert(`Book "${book.name}" is not available for checkout.`);
       }
   
       await axios.post("http://localhost:5000/api/checkout/checkout", {
@@ -74,6 +81,7 @@ const Checkout = () => {
       });
   
       fetchCheckouts();
+      // Reset form inputs after a successful checkout
       setBookSearch("");
       setMemberSearch("");
       setSelectedBook("");
@@ -82,6 +90,7 @@ const Checkout = () => {
       console.error("Error checking out book:", error);
     }
   };
+  
   
   
   const handleReturn = async (checkoutId) => {

@@ -79,8 +79,8 @@ const LibrarianDashboard = () => {
 
   const totalFine = activeBorrowings.reduce((sum, checkout) => {
     const daysBorrowed = calculateDays(checkout.createdAt, new Date());
-    if (daysBorrowed > 8) {
-      return sum + (daysBorrowed - 8) * finePerDay;
+    if (daysBorrowed > 9) {
+      return sum + (daysBorrowed - 9) * finePerDay;
     }
     return sum;
   }, 0);

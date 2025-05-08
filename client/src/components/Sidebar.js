@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaTachometerAlt, FaUsers, FaBook, FaShoppingCart } from "react-icons/fa";
+import { FaTachometerAlt, FaUsers, FaBook, FaShoppingCart, FaMoneyBillAlt } from "react-icons/fa"; // Importing a new icon
 import "../styles/Sidebar.css"; // Import custom styles
 
 const Sidebar = () => {
@@ -40,6 +40,15 @@ const Sidebar = () => {
           >
             <FaShoppingCart className="sidebar-icon" />
             <span>Check-Out</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/home/pending-fines" 
+            className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}
+          >
+            <FaMoneyBillAlt className="sidebar-icon" /> {/* Icon for Pending Fines */}
+            <span>Pending Fines</span>
           </NavLink>
         </li>
       </ul>
