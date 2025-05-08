@@ -95,7 +95,7 @@ const Books = () => {
 
   return (
     <div className="books-container">
-      <button className="float-add-btn" onClick={() => setShowModal(true)}>➕ Add Book</button>
+      <button className="float-add-btn" onClick={() => setShowModal(true)}>Add Book</button>
       <h2>Books</h2>
 
       <input

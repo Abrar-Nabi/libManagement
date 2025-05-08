@@ -66,12 +66,21 @@ const LibrarianDashboard = () => {
   };
 
   const rentPerDay = 10;
+  const finePerDay = 10;
   const activeBorrowings = checkouts.filter(c => !c.returned);
 
   const totalRevenue = checkouts.reduce((sum, c) => {
     if (c.returned && c.returnDate) {
       const days = calculateDays(c.createdAt, c.returnDate);
       return sum + days * rentPerDay;
+    }
+    return sum;
+  }, 0);
+
+  const totalFine = activeBorrowings.reduce((sum, checkout) => {
+    const daysBorrowed = calculateDays(checkout.createdAt, new Date());
+    if (daysBorrowed > 8) {
+      return sum + (daysBorrowed - 8) * finePerDay;
     }
     return sum;
   }, 0);
@@ -89,39 +98,36 @@ const LibrarianDashboard = () => {
   };
 
   return (
-    
     <div className="librarian-dashboard">
-       <div className="actions">
-      <span>Quick actions : </span>  <button onClick={() => setShowModal(true)}>Add Book</button>
+      <div className="actions">
+        <span>Quick actions : </span>
+        <button onClick={() => setShowModal(true)}>Add Book</button>
       </div>
 
       <h2>Welcome admin</h2>
 
- <div className="overview-cards">
-  <div className="dashboard-card yellow">
-    <FaBook className="dashboard-icon" />
-    <div className="count">{books.length}</div>
-    <p>Total Books</p>
-  </div>
-  <div className="dashboard-card purple">
-    <FaBookOpen className="dashboard-icon" />
-    <div className="count">{activeBorrowings.length}</div>
-    <p>Borrowed Copies</p>
-  </div>
-  <div className="dashboard-card blue">
-    <FaCheckCircle className="dashboard-icon" />
-    <div className="count">{totalAvailable}</div>
-    <p>Available Copies</p>
-  </div>
-  <div className="dashboard-card green">
-    <FaUserFriends className="dashboard-icon" />
-    <div className="count">{users.length}</div>
-    <p>Total Members</p>
-  </div>
-</div>
-
-
-   
+      <div className="overview-cards">
+        <div className="dashboard-card purple">
+          <FaBookOpen className="dashboard-icon" />
+          <div className="count">{activeBorrowings.length}</div>
+          <p>Borrowed Copies</p>
+        </div>
+        <div className="dashboard-card blue">
+          <FaCheckCircle className="dashboard-icon" />
+          <div className="count">{totalAvailable}</div>
+          <p>Available Copies</p>
+        </div>
+        <div className="dashboard-card green">
+          <FaUserFriends className="dashboard-icon" />
+          <div className="count">{users.length}</div>
+          <p>Total Members</p>
+        </div>
+        <div className="dashboard-card red">
+          <FaCheckCircle className="dashboard-icon" />
+          <div className="count">₹{totalFine}</div>
+          <p>Total Pending Fine</p>
+        </div>
+      </div>
 
       <h3>Recently Borrowed Books</h3>
       {activeBorrowings.length === 0 ? (

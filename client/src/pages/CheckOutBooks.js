@@ -53,6 +53,15 @@ const Checkout = () => {
       return alert("Please select a book and a member.");
     }
   
+    // Count how many books this user currently has not returned
+    const activeCheckouts = checkouts.filter(
+      (c) => c.userId?._id === selectedMember && !c.returned
+    );
+  
+    if (activeCheckouts.length >= 3) {
+      return alert("❌ This member already has 3 books checked out.");
+    }
+  
     try {
       const book = books.find(b => b._id === selectedBook);
       if (book.totalCopies <= 0) {
@@ -74,15 +83,16 @@ const Checkout = () => {
     }
   };
   
+  
   const handleReturn = async (checkoutId) => {
     try {
       await axios.put(`http://localhost:5000/api/checkout/return/${checkoutId}`);
-      fetchCheckouts();
+      setCheckouts(prev => prev.filter(c => c._id !== checkoutId));
     } catch (error) {
       console.error("Error returning book:", error);
     }
   };
-
+  
   const calculateDaysBorrowed = (start) => {
     const diff = new Date() - new Date(start);
     return Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -155,7 +165,7 @@ const Checkout = () => {
           )}
         </div>
 
-        <button onClick={handleCheckout}>🔄 Checkout</button>
+        <button onClick={handleCheckout}>Checkout</button>
       </div>
 
       <table>
@@ -173,7 +183,7 @@ const Checkout = () => {
           {checkouts.map((checkout) => {
             const checkoutDate = new Date(checkout.createdAt);
             const days = calculateDaysBorrowed(checkoutDate);
-            const rent = days * rentPerDay;
+            const rent = days > 9 ? (days - 9) * rentPerDay : 0;
 
             return (
               <tr key={checkout._id}>
